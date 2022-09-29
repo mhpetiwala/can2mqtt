@@ -4,7 +4,8 @@ dbc_files:
  - eos7.dbc
 can:
   interface: can0
-  bitrate: 125000
+  bitrate: 500000
+  dbitrate: 2000000
 mqtt:
   host: some_host_or_ip
   username: my_mqtt_user
