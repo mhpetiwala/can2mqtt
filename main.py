@@ -57,7 +57,10 @@ def main_program():
     mqtt_client = mqtt.Client('can2mqtt')
     mqtt_client.username_pw_set(username=config['mqtt']['username'],password=config['mqtt']['password'])
     mqtt_client.connect('hassio.fritz.box')
-    bus = can.interface.Bus(bustype='socketcan', channel=config['can']['interface'], bitrate=config['can']['bitrate'])
+    if 'dbitrate' in config['can']:
+      bus = can.interface.Bus(bustype='socketcan', channel=config['can']['interface'], bitrate=config['can']['bitrate'], dbitrate=config['can']['dbitrate'])
+    else:
+      bus = can.interface.Bus(bustype='socketcan', channel=config['can']['interface'], bitrate=config['can']['bitrate'])
 
     db = cantools.database.Database()
     for file in config['dbc_files']:
