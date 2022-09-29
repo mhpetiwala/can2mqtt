@@ -6,6 +6,15 @@ can:
   interface: can0
   bitrate: 500000
   dbitrate: 2000000
+  filters:: False
+   - filter:
+     can_id: 0x451
+     can_mask: 0x7FF
+     extended: False
+   - filter:
+      can_id: 0xA0000
+     can_mask: 0x1FFFFFFF
+     extended: True
 mqtt:
   host: some_host_or_ip
   username: my_mqtt_user
